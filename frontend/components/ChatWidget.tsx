@@ -170,9 +170,9 @@ export default function ChatWidget({ leadId, apiUrl, wsUrl }: ChatWidgetProps) {
                   <p style={{ fontSize: '0.925rem', whiteSpace: 'pre-wrap' }}>{m.content}</p>
                   
                   {m.sources && m.sources.length > 0 && (
-                    <div style={{ marginTop: '0.75rem', paddingTop: '0.5rem', borderTop: '1px solid #f1f5f9', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    <div style={{ marginTop: '0.75rem', paddingTop: '0.5rem', borderTop: '1px solid currentColor', opacity: 0.5, display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                       {m.sources.map((s, idx) => (
-                        <span key={idx} style={{ fontSize: '0.65rem', color: '#64748b', backgroundColor: '#f1f5f9', padding: '0.15rem 0.4rem', borderRadius: '4px', display: 'flex', alignItems: 'center', gap: '0.2rem' }}>
+                        <span key={idx} style={{ fontSize: '0.65rem', border: '1px solid currentColor', padding: '0.15rem 0.4rem', borderRadius: '4px', display: 'flex', alignItems: 'center', gap: '0.2rem' }}>
                           <Quote size={10} /> {s}
                         </span>
                       ))}

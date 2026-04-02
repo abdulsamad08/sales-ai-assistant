@@ -1,34 +1,56 @@
-# AI Sales Assistant Proof-of-Concept
+# 🚢 AI Sales Assistant (MEMOX AI)
 
-This is a real-time AI sales assistant built for a shipping container company. It uses RAG (Retrieval-Augmented Generation) to ground AI responses in actual product documentation, pricing, and policies.
+A premium, RAG-powered sales assistant for shipping container companies. Built with **Django (Backend)** and **Next.js (Frontend)**, integrated with **Google Gemini 1.5 Flash**.
 
-## Features
-- **Real-time Chat**: Bidirectional communication via WebSockets with typing indicators.
-- **RAG Pipeline**: Automated document ingestion, chunking, and vector search (using SentenceTransformers).
-- **Admin Dashboard**: Manage and re-index document sources.
-- **Intent-based Actions**: Automatically detects pricing queries or purchase intent for lead handoff.
-- **Premium UI**: Modern, responsive Next.js interface with bespoke Vanilla CSS and Framer Motion animations.
+## 🚀 Quick Start
 
-## Tech Stack
-- **Backend**: Django, Django Rest Framework, Django Channels (WebSockets)
-- **Frontend**: Next.js 14, TypeScript, Framer Motion
-- **AI/ML**: `sentence-transformers` for local embeddings, Numpy for cosine similarity.
+### 1. Backend Setup (Django)
+```bash
+cd backend
+python -m venv venv
+venv\Scripts\activate  # On Windows
+pip install -r requirements.txt
+```
 
-## Getting Started
+#### Environment Variables
+Create a `.env` in the `backend/` folder (use `.env.example` as a template):
+```env
+GEMINI_API_KEY=your_key_here
+GEMINI_MODEL=gemini-1.5-flash
+LLM_BACKEND=gemini
+```
 
-### Local Setup (Backend)
-1. Navigate to `/backend`
-2. Install dependencies: `pip install -r requirements.txt`
-3. Run migrations: `python manage.py migrate`
-4. Seed sample docs: `python seed_docs.py`
-5. Start server: `python manage.py runserver`
+#### Run Database Migrations & Seed Data
+```bash
+python manage.py makemigrations documents ai
+python manage.py migrate
+python seed_docs.py  # Seeds the RAG documentation
+```
 
-### Local Setup (Frontend)
-1. Navigate to `/frontend`
-2. Install dependencies: `npm install`
-3. Run dev server: `npm run dev`
-4. Visit `http://localhost:3000` for the chat and `http://localhost:3000/admin` for the dashboard.
+#### Start Backend Server
+```bash
+python manage.py runserver 8000
+```
+*The backend uses Daphne for ASGI/WebSocket support.*
 
-## Tests
-Run tests using pytest:
-`pytest backend/tests/`
+### 2. Frontend Setup (Next.js)
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) to see the result.
+
+## 🛠 Features
+- **RAG-Powered Chat**: Natural responses using your company's own document context.
+- **Real-time WebSockets**: Instant message delivery via Django Channels.
+- **Admin Dashboard**: Categorize leads and manage documents at `http://localhost:3000/admin`.
+- **Sleek UX**: Minimalist industrial design with smooth mouse-following spotlight and parallax animations.
+
+## 📦 Tech Stack
+- **AI**: Google Gemini 2.5 Flash, Sentence-Transformers (Local Embeddings).
+- **Backend**: Django 5.0, Channels, Daphne, DRF.
+- **Frontend**: Next.js 14, Framer Motion, Lucide React, Tailwind CSS (optional fallback).
+
+---
+*Built as a professional Proof of Concept for elite container logistics.*
